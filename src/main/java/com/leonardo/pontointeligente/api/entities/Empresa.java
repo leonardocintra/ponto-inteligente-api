@@ -1,5 +1,6 @@
 package com.leonardo.pontointeligente.api.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,9 @@ import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "empresa")
-public class Empresa {
+public class Empresa implements Serializable {
+	
+	private static final long serialVersionUID = 7069059001736327245L;
 	
 	private Long id;
 	private String razaSocial;
