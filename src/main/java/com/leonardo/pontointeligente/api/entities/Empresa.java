@@ -24,7 +24,7 @@ public class Empresa implements Serializable {
 	private static final long serialVersionUID = 7069059001736327245L;
 	
 	private Long id;
-	private String razaSocial;
+	private String razaoSocial;
 	private String cnpj;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
@@ -44,11 +44,11 @@ public class Empresa implements Serializable {
 	}
 	
 	@Column(name = "razao_social", nullable = false)
-	public String getRazaSocial() {
-		return razaSocial;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
-	public void setRazaSocial(String razaSocial) {
-		this.razaSocial = razaSocial;
+	public void setRazaoSocial(String razaSocial) {
+		this.razaoSocial = razaSocial;
 	}
 	
 	@Column(name = "cnpj", nullable = false)
@@ -97,7 +97,7 @@ public class Empresa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Empresa [id=" + id + ", razaSocial=" + razaSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
 				+ ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
 }
