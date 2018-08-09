@@ -31,22 +31,22 @@ public class LancamentoRepositoryTest {
 
 	@Autowired
 	private LancamentoRepository lancamentoRepository;
-	
+
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
-	
+
 	@Autowired
 	private EmpresaRepository empresaRepository;
-	
+
 	private Long funcionarioId;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		Empresa empresa = this.empresaRepository.save(obterDadosEmpresaMock());
-		
+
 		Funcionario funcionario = this.funcionarioRepository.save(obterDadosFuncionarioMock(empresa));
 		this.funcionarioId = funcionario.getId();
-		
+
 		this.lancamentoRepository.save(obterDadosLancamentosMock(funcionario));
 		this.lancamentoRepository.save(obterDadosLancamentosMock(funcionario));
 	}
@@ -59,19 +59,18 @@ public class LancamentoRepositoryTest {
 	@Test
 	public void testBuscarLancamentosPorFuncionarioId() {
 		List<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId);
-		
+
 		assertEquals(2, lancamentos.size());
 	}
-	
+
 	@Test
 	public void testBuscarLancamentosPorFuncionarioIdPaginado() {
-		PageRequest page = new PageRequest(0, 10);
+		PageRequest page = PageRequest.of(0, 10);
 		Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
-		
+
 		assertEquals(2, lancamentos.getTotalElements());
 	}
-	
-	
+
 	private Lancamento obterDadosLancamentosMock(Funcionario funcionario) {
 		Lancamento lancameto = new Lancamento();
 		lancameto.setData(new Date());
@@ -79,7 +78,7 @@ public class LancamentoRepositoryTest {
 		lancameto.setFuncionario(funcionario);
 		return lancameto;
 	}
-	
+
 	private Funcionario obterDadosFuncionarioMock(Empresa empresa) throws NoSuchAlgorithmException {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setNome("Fulano de Tal");
@@ -90,7 +89,7 @@ public class LancamentoRepositoryTest {
 		funcionario.setEmpresa(empresa);
 		return funcionario;
 	}
-	
+
 	private Empresa obterDadosEmpresaMock() {
 		Empresa empresa = new Empresa();
 		empresa.setRazaoSocial("Empresa de exemplo");
