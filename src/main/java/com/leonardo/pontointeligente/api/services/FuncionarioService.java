@@ -10,7 +10,7 @@ public interface FuncionarioService {
 
 	Optional<Funcionario> buscarPorCpf(String cpf);
 
-	Optional<Funcionario> bucarPorEmail(String email);
+	Optional<Funcionario> buscarPorEmail(String email);
 
 	Optional<Funcionario> buscarPorId(Long id);
 }

@@ -52,7 +52,7 @@ public class FuncionarioServiceTest {
 	
 	@Test
 	public void testBuscarFuncionarioPorEmail() {
-		Optional<Funcionario> funcionario = this.funcionarioService.bucarPorEmail("email@teste.com.br");
+		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorEmail("email@teste.com.br");
 		assertTrue(funcionario.isPresent());
 	}
 	
